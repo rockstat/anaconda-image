@@ -1,3 +1,3 @@
 # Rockstat / Anaconda
 
-Build instructions for build Anaconda container for Rockstat platform
+Build instructions to build Anaconda container for Rockstat platform
