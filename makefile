@@ -1,3 +1,3 @@
 
-build:
-	docker build -t rockstat/anaconda .
+build-dev:
+	docker build -t rockstat/anaconda:dev .

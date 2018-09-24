@@ -9,3 +9,15 @@ ADD requirements.txt .
 RUN apt-get -yqq update && apt-get -yqq install make gcc g++ coreutils
 RUN pip install -U -r requirements.txt
 RUN ${conda} install jupyter -y --quiet
+
+VOLUME [ "/opt/notebooks" ]
+
+CMD ["/opt/conda/bin/jupyter", \
+    "notebook", \
+    "--notebook-dir=/opt/notebooks", \
+    "--ip='*'", \
+    "--port=8080", \
+    "--no-browser", \
+    "--allow-root", \
+    "--NotebookApp.token=''", \
+    "--NotebookApp.allow_origin='*'"]
