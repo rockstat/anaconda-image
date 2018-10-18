@@ -1,25 +1,20 @@
 sudo: required
 dist: trusty
-
 env:
   global:
-    - PROJECT_NAME=anaconda
-    - ORG=rockstat
-    - IMAGE_NAME=$ORG/$PROJECT_NAME
-
+  - PROJECT_NAME=anaconda
+  - ORG=rockstat
+  - IMAGE_NAME=$ORG/$PROJECT_NAME
+  - secure: WF1PYuKNy4mgaYCUhYaox+kAcK5fjsJ9IQ/0CTTFGtNC+VpZIhgZzKqbBbcaqqn5nMMYjd1uMIyczZU3gfz+NG+iQ2i/2r9J4hzAoGtcBZKdgLTe+gWIW1sXnNzwDW+oS2q32PFMkFDCMGPpegdeYwyLbpjGwvf8dwRC1Lq08NycQVLXehlVtRdc9KgqE/Hk/0T4W4eZAREksBwibBo9pqIP3CvkNa+LB1mZ71k7mCUuk03sybGCbWSJa4LWJqakKVzD+34ncy6PbXBhoynCLW7kea7pm5TsCTq7ufzpGvcxdCBvY9idteCbLqRDzEnH1UowEucrnltVzPW7YZPbi4sIbMlhbj2CadJ7ex1jHeufUrcXWcTSOAgmHNCtQOgABFCoWrfjsgeuOlAEt9b0LuSlEit/FOge4MpmYyeodsyPWdJ3qXUZZBBaeptG2i8IlxYlz45Qipmo/Ph1PQ813+aeDx+mlKmshO4cmDFmC2UsRQIlczHCOsD85gbBXmdtx0E79fNBVSD6BypZNjPmPDHSbzrqyLX4QsFI2NQ2cVeH/CoIjC+iu9mmsi61G83dJkFZaR4C8ADuYLTrdw9AlRSk96dqLgizIM9axFnrpNu1yrFY8N0evUc5EO851NWT9LFw5NUtVJ3rfcYw36zca49Ed12cecCUEBQt9BQ7lgM=
 services:
 - docker
-
 script:
 - docker build -t $PROJECT_NAME .
-
 after_script:
 - docker images
-
 before_deploy:
 - docker tag $PROJECT_NAME $IMAGE_NAME
 - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-
 deploy:
   provider: script
   skip_cleanup: true
