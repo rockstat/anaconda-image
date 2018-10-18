@@ -18,7 +18,7 @@ RUN pip install -U -r requirements.txt
 # Jupyter packages
 RUN ${conda} install jupyter "ipython>7" "ipykernel>5" -y --quiet
 # R packages
-RUN conda install --quiet --yes \
+RUN ${conda} install --quiet --yes \
     'r-base=3.4.1' \
     'r-irkernel=0.8*' \
     'r-plyr=1.8*' \
@@ -38,7 +38,7 @@ RUN conda install --quiet --yes \
     'r-sparklyr=0.7*' \
     'r-htmlwidgets=1.0*' \
     'r-hexbin=1.27*' && \
-    conda clean -tipsy &&
+    conda clean -tipsy
 
 VOLUME [ "/opt/notebooks" ]
 
