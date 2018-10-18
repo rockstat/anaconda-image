@@ -8,7 +8,8 @@ ADD requirements.txt .
 
 RUN apt-get -yqq update && apt-get -yqq install make gcc g++ coreutils
 RUN pip install -U -r requirements.txt
-RUN ${conda} install jupyter -y --quiet
+RUN ${conda} install jupyter "ipython>7" "ipykernel>5" -y --quiet
+
 
 VOLUME [ "/opt/notebooks" ]
 
