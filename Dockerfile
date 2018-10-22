@@ -16,7 +16,7 @@ RUN apt-get -yqq update \
 
 RUN pip install -U -r requirements.txt
 # Jupyter packages
-RUN ${conda} install jupyter "ipython=7*" "ipykernel=5* jupyter_console=6*" -y --quiet
+RUN ${conda} install jupyter "ipython=7*" "ipykernel=5*" "jupyter_console=6*" -y --quiet
 # R packages
 RUN ${conda} install --quiet --yes \
     'r-base=3.5.1'\
