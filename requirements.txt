@@ -4,3 +4,5 @@ prodict
 arrow
 simplech
 aiohttp
+psycopg2
+SQLAlchemy
