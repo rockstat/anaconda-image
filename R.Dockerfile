@@ -23,5 +23,30 @@ RUN ${conda} install --quiet --yes \
     'r-sparklyr=0.8*'\
     'r-htmlwidgets=1.2*'\
     'r-hexbin=1.27*'\
+    'r-doparallel=1.0*'\
+    'r-dplyr=0.7*'\
+    'r-tidyr=0.8*'\
+    'r-stringi=1.2*'\
+    'r-lattice=0.20*'\
+    'r-lubridate=1.7*'\
+    'r-lmtest=0.9*'\
+    'r-zoo=1.8*'\
+    'r-xts=0.11*'\
+    'r-ggplot2=3.0*'\
+    'r-car=3.0*'\
+    'r-forecast=8.4*'\
+    'r-ttr=0.23*'\
+    'r-tseries=0.10*'\
+    'r-reshape=0.8*'\
+    'r-scales=0.5*'\
+    'r-httr=1.3*'\
+    'r-rcurl=1.95*'\
+    'r-base64enc=0.1*'\
+    'r-openssl=1.0*'\
+    'r-digest=0.6*'\
+    'r-mongolite=1.6*'\
+    'r-jsonlite=1.5*'\
+    'r-rmysql=0.10*'\
+    'r-domc=1.3*'\
     && conda clean -tipsy
 
