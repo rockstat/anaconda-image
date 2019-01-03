@@ -15,7 +15,7 @@ tag-latest:
 push-latest:
 	docker push rockstat/anaconda:latest
 	docker push rockstat/anaconda:lab
-	docker push rockstat/anaconda:r
+	# docker push rockstat/anaconda:r
 
 run:
 	docker run --rm -p 8083:8080 rockstat/anaconda:dev 
