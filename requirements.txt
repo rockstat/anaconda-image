@@ -5,4 +5,4 @@ arrow
 simplech
 aiohttp
 psycopg2
-SQLAlchemy
+python-dotenv
