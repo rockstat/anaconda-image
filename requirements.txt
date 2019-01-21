@@ -6,3 +6,4 @@ simplech
 aiohttp
 psycopg2
 python-dotenv
+nest_asyncio
