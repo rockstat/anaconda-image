@@ -14,6 +14,7 @@ RUN apt-get -yqq update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install -U pip
 RUN pip install -U -r requirements.txt
 
 # Jupyter packages
