@@ -15,6 +15,7 @@ RUN apt-get -yqq update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install -U pip
+RUN pip install -U 'git+https://github.com/madiedinro/simple-clickhouse#egg=simplech'
 RUN pip install -U -r requirements.txt
 
 # Jupyter packages

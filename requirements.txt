@@ -2,7 +2,6 @@ msgpack
 ujson
 prodict
 arrow
-simplech
 aiohttp
 psycopg2
 python-dotenv
