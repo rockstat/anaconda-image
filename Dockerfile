@@ -3,6 +3,7 @@ FROM continuumio/anaconda3
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG conda=/opt/conda/bin/conda
+LABEL band.images.anaconda.version="0.1.1"
 
 ADD requirements.txt .
 

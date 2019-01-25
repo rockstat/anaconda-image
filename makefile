@@ -1,7 +1,11 @@
 
+
+.PHONY: build build-r tag-dev tag-latest push-latest run
 build:
 	docker build -t anaconda .
 	docker build -t anaconda-lab -f Lab.Dockerfile .
+
+build-r:
 	docker build -t anaconda-r -f R.Dockerfile .
 
 tag-dev:
