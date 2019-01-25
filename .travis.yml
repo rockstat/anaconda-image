@@ -10,12 +10,12 @@ services:
 - docker
 script:
 - docker build -t "${PROJECT_NAME}" .
-- docker build -t "${PROJECT_NAME}-lab" -f Dockerfile_lab .
+- docker build -t "${PROJECT_NAME}:lab" -f Dockerfile_lab .
 after_script:
 - docker images
 before_deploy:
 - docker tag "${PROJECT_NAME}" "${IMAGE_NAME}:latest"
-- docker tag "${PROJECT_NAME}-lab" "${IMAGE_NAME}:lab"
+- docker tag "${PROJECT_NAME}:lab" "${IMAGE_NAME}:lab"
 - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 deploy:
   provider: script
