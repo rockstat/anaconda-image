@@ -2,8 +2,8 @@
 
 .PHONY: build build-r tag-dev tag-latest push-latest run
 build:
-	docker build -t anaconda .
-	docker build -t anaconda-lab -f Dockerfile_lab .
+	docker build -t anaconda -f Dockerfile .
+	docker build -t anaconda:lab -f Dockerfile_lab .
 
 build-r:
 	docker build -t anaconda-r -f Dockerfile_r .
@@ -13,8 +13,8 @@ tag-dev:
 
 tag-latest:
 	docker tag anaconda rockstat/anaconda:latest
-	docker tag anaconda-lab rockstat/anaconda:lab
-	docker tag anaconda-r rockstat/anaconda:r
+	docker tag anaconda:lab rockstat/anaconda:lab
+	# docker tag anaconda-r rockstat/anaconda:r
 
 push-latest:
 	docker push rockstat/anaconda:latest
