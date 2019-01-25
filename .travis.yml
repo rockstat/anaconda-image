@@ -10,7 +10,7 @@ services:
 - docker
 script:
 - docker build -t "${PROJECT_NAME}" .
-- docker build -t "${PROJECT_NAME}-lab" -f Dockerfile.lab .
+- docker build -t "${PROJECT_NAME}-lab" -f Dockerfile_lab .
 after_script:
 - docker images
 before_deploy:
