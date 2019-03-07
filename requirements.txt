@@ -6,3 +6,6 @@ aiohttp
 psycopg2
 python-dotenv
 nest_asyncio
+redis
+aioredis
+aiopg
