@@ -19,6 +19,7 @@ RUN apt-get -yqq update \
 
 RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && groupadd -g $RST_GID rock \
+    && mkdir /opt/notebooks \
     && useradd -u $RST_UID -g $RST_GID -s /bin/bash rock -d /opt/notebooks \
     && chmod g+rw /opt/notebooks
 
