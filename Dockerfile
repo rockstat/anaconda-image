@@ -4,13 +4,20 @@ FROM continuumio/anaconda3
 ENV DEBIAN_FRONTEND=noninteractive
 ARG conda=/opt/conda/bin/conda
 LABEL band.images.anaconda.version="0.1.1"
+ENV RST_UID=472 \ 
+    RST_GID=472
+
+RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default \
+    && chmod 0440 /etc/sudoers.d/default \
+    && addgroup -g ${RST_GID} rock \
+    && adduser -u ${RST_UID} -G rock -s /bin/sh -D rock \
+    && chmod g+rw /opt/notebooks
 
 ADD requirements.txt .
-
 RUN apt-get -yqq update \
     && apt-get -yqq --no-install-recommends install \
     make gcc g++ coreutils \
-    gfortran \
+    gfortran gosu\
     fonts-dejavu tzdata \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -21,14 +28,10 @@ RUN pip install -U -r requirements.txt
 
 # Jupyter packages
 RUN ${conda} install jupyter "ipython=7*" "ipykernel=5*" "jupyter_console=6*" -y --quiet
+ADD init_prettyprinter.py /root/.ipython/profile_default/startup/init_prettyprinter.py
+ADD start_app /usr/local/bin
 
 VOLUME [ "/opt/notebooks" ]
 
-ENTRYPOINT [ "/opt/conda/bin/jupyter", "notebook" ]
-CMD [ "--notebook-dir=/opt/notebooks", \
-    "--ip='0.0.0.0'", \
-    "--port=8080", \
-    "--no-browser", \
-    "--allow-root", \
-    "--NotebookApp.token=''", \
-    "--NotebookApp.allow_origin='*'"]
+# ENTRYPOINT [ "" ]
+CMD ["/opt/notebooks/start_app"]

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+chown -R rock:rock /opt/notebooks
+
+/usr/sbin/gosu rock:rock /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks \
+    --ip='0.0.0.0' \
+    --port=8080 \
+    --no-browser \
+    --allow-root \
+    --NotebookApp.token='' \
+    --NotebookApp.allow_origin='*'

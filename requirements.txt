@@ -9,3 +9,4 @@ nest_asyncio
 redis
 aioredis
 aiopg
+prettyprinter
