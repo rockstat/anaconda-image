@@ -17,10 +17,10 @@ RUN apt-get -yqq update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default \
-    && chmod 0440 /etc/sudoers.d/default \
+RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && addgroup -g ${RST_GID} rock \
-    && adduser -u ${RST_UID} -G rock -s /bin/sh -D rock \
+    && adduser -u ${RST_UID} -G rock -s /bin/bash -D rock \
+    && mkdir /opt/notebooks \
     && chmod g+rw /opt/notebooks
 
 
