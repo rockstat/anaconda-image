@@ -18,8 +18,8 @@ RUN apt-get -yqq update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
-    && addgroup --gid ${RST_GID} rock \
-    && adduser --uid ${RST_UID} -G rock -s /bin/bash -D rock \
+    && groupadd -g $RST_GID rock \
+    && useradd -u $RST_UID -g $RST_GID -s /bin/bash rock \
     && mkdir /opt/notebooks \
     && chmod g+rw /opt/notebooks
 
