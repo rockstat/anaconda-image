@@ -7,20 +7,22 @@ LABEL band.images.anaconda.version="0.1.1"
 ENV RST_UID=472 \ 
     RST_GID=472
 
+
+ADD requirements.txt .
+RUN apt-get -yqq update \
+    && apt-get -yqq --no-install-recommends install \
+    make gcc g++ coreutils sudo \
+    gfortran gosu\
+    fonts-dejavu tzdata \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default \
     && chmod 0440 /etc/sudoers.d/default \
     && addgroup -g ${RST_GID} rock \
     && adduser -u ${RST_UID} -G rock -s /bin/sh -D rock \
     && chmod g+rw /opt/notebooks
 
-ADD requirements.txt .
-RUN apt-get -yqq update \
-    && apt-get -yqq --no-install-recommends install \
-    make gcc g++ coreutils \
-    gfortran gosu\
-    fonts-dejavu tzdata \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN pip install -U pip
 RUN pip install -U 'git+https://github.com/madiedinro/simple-clickhouse#egg=simplech'
