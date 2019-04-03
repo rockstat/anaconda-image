@@ -36,4 +36,4 @@ ADD start_app /usr/local/bin
 VOLUME [ "/opt/notebooks" ]
 
 # ENTRYPOINT [ "" ]
-CMD ["/opt/notebooks/start_app"]
+CMD ["/use/local/bin/start_app"]
