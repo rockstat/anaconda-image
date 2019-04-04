@@ -8,7 +8,6 @@ ENV RST_UID=472 \
     RST_GID=472
 
 
-ADD requirements.txt .
 RUN apt-get -yqq update \
     && apt-get -yqq --no-install-recommends install \
     make gcc g++ coreutils sudo \
@@ -17,12 +16,8 @@ RUN apt-get -yqq update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "rock ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
-    && groupadd -g $RST_GID rock \
-    && mkdir /opt/notebooks \
-    && useradd -u $RST_UID -g $RST_GID -s /bin/bash rock -d /opt/notebooks \
-    && chmod g+rw /opt/notebooks
-
+ADD start_app /usr/local/bin/start_app
+ADD requirements.txt .
 
 RUN pip install -U pip
 RUN pip install -U 'git+https://github.com/madiedinro/simple-clickhouse#egg=simplech'
@@ -31,7 +26,6 @@ RUN pip install -U -r requirements.txt
 # Jupyter packages
 RUN ${conda} install jupyter "ipython=7*" "ipykernel=5*" "jupyter_console=6*" -y --quiet
 ADD init_prettyprinter.py /root/.ipython/profile_default/startup/init_prettyprinter.py
-ADD start_app /usr/local/bin/start_app
 
 VOLUME [ "/opt/notebooks" ]
 

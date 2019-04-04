@@ -1,8 +1,8 @@
 #!/bin/bash
 
-chown -R rock:rock /opt/notebooks
+chown -R 472:472 /opt/notebooks
 
-/usr/sbin/gosu rock:rock /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks \
+/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks \
     --ip='0.0.0.0' \
     --port=8080 \
     --no-browser \
