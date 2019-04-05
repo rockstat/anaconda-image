@@ -25,7 +25,7 @@ RUN pip install -U -r requirements.txt
 
 # Jupyter packages
 RUN ${conda} install jupyter "ipython=7*" "ipykernel=5*" "jupyter_console=6*" -y --quiet
-ADD init_prettyprinter.py /root/.ipython/profile_default/startup/init_prettyprinter.py
+# ADD init_prettyprinter.py /root/.ipython/profile_default/startup/init_prettyprinter.py
 
 VOLUME [ "/opt/notebooks" ]
 
