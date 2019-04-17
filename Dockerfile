@@ -11,7 +11,8 @@ ENV RST_UID=472 \
 RUN apt-get -yqq update \
     && apt-get -yqq --no-install-recommends install \
     make gcc g++ coreutils sudo \
-    gfortran gosu\
+    libffi libffi-dev \
+    gfortran gosu \
     fonts-dejavu tzdata \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
